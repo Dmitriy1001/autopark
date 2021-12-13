@@ -8,6 +8,9 @@ class Driver(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
+    class Meta:
+        ordering = ('created_at',)
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 

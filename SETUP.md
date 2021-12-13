@@ -6,7 +6,7 @@
 ### Старт
 1. Створити віртуальне оточення - python/python3 -m venv venv
 2. Активувати віртуальне оточення
-* Linux: source myvenv/bin/activate
+* Linux: source venv/bin/activate
 * Windows: venv/Scripts/activate  
 3. Встановити залежності - pip install -r requirements.txt
 4. Виконати команду для міграцій - python manage.py migrate

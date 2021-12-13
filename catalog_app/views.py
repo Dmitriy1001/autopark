@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .serializers import DriverSerializer
 from .models import Driver, Vehicle
+from .serializers import DriverSerializer, VehicleSerializer, VehicleSetDriverSerializer
 
 
 class DriverList(generics.ListCreateAPIView):
@@ -23,3 +23,25 @@ class DriverDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DriverSerializer
     lookup_url_kwarg = 'driver_id'
 
+
+class VehicleList(generics.ListCreateAPIView):
+    serializer_class = VehicleSerializer
+
+    def get_queryset(self):
+        params = self.request.GET
+        if 'with_drivers' in params:
+            is_null = False if params['with_drivers'].lower() == 'yes' else True
+            return Vehicle.objects.filter(driver_id__isnull=is_null).select_related('driver_id')
+        return Vehicle.objects.select_related('driver_id')
+
+
+class VehicleDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Vehicle.objects.select_related('driver_id')
+    serializer_class = VehicleSerializer
+    lookup_url_kwarg = 'vehicle_id'
+
+
+class VehicleSetDriver(generics.RetrieveUpdateAPIView):
+    queryset = Vehicle.objects.select_related('driver_id')
+    serializer_class = VehicleSetDriverSerializer
+    lookup_url_kwarg = 'vehicle_id'

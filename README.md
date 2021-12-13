@@ -1,4 +1,4 @@
-REST API for fleet of drivers
+REST API for cars fleet(парк машин з водіями)
 ---
 
 ##### 1. Модель Driver 

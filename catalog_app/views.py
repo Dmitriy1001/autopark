@@ -4,7 +4,7 @@ from .serializers import DriverSerializer
 from .models import Driver, Vehicle
 
 
-class DriverList(generics.ListAPIView):
+class DriverList(generics.ListCreateAPIView):
     serializer_class = DriverSerializer
 
     def get_queryset(self):
@@ -18,7 +18,7 @@ class DriverList(generics.ListAPIView):
         return Driver.objects.all()
 
 
-class DriverDetail(generics.RetrieveAPIView):
+class DriverDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
     lookup_url_kwarg = 'driver_id'

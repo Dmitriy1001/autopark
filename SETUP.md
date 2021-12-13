@@ -10,4 +10,4 @@
 * Windows: venv/Scripts/activate  
 3. Встановити залежності - pip install -r requirements.txt
 4. Виконати команду для міграцій - python manage.py migrate
-5. Запустити сервер
+5. Запустити сервер - python manage.py runserver

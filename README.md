@@ -1,5 +1,4 @@
 # REST API for cars fleet(парк машин з водіями)
-### Тестове завдання для Yalantis Python School
 
 ##### 1. Модель Driver 
 
